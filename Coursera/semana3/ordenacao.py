@@ -1,15 +1,8 @@
-numero = ((input('Digite um número inteiro: ')))
+primeroNum = int(input('Digite o primeiro número inteiro: '))
+segundoNum = int(input('Digite o segundo número inteiro: '))
+terceiroNum = int(input('Digite o terceiro número inteiro: '))
 
-
-primeiroNum = numero[0:1]
-segundoNum = numero[1:2]
-terceiroNum = numero[2:3]
-
-num1 = int(primeiroNum)
-num2 = int(segundoNum)
-num3 = int(terceiroNum)
-
-if(num1 < num2 < num3):
+if(primeroNum<segundoNum<terceiroNum):
     print('crescente')
 else:
-    print('decrescente')
+    print('não está em ordem crescente')
