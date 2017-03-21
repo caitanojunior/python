@@ -1,17 +1,21 @@
-numero = input('Digite um número inteiro com no mínimo 3 dígitos: ')
+num = int(input('Digite um número inteiro com no mínimo 3 dígitos: '))
 
 naoTemNumeroAdjacenteIgual = True
-num = int(numero)
-tamanho = len(numero)
 
-while(naoTemNumeroAdjacenteIgual):
+while(naoTemNumeroAdjacenteIgual and num > 0):
     ultimoNumero = num % 10
     num = num // 10
-    proximo = num%10
-    if(ultimoNumero == proximo):
-        print('Esta sequência tem um número igual')
+    proximo = num % 10
+    if ultimoNumero == proximo:
         naoTemNumeroAdjacenteIgual = False
-    else:
-        print('Esta sequência não tem um número igual')
         break
+    else:
+        naoTemNumeroAdjacenteIgual = True
+
+if naoTemNumeroAdjacenteIgual == False:
+    print('Esta sequência tem um número igual')
+    print(num)
+else:
+    print('Esta sequência não tem um número igual')
+
 
