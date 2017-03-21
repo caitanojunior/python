@@ -1,7 +1,14 @@
 numero = int(input('Digite um número inteiro: '))
 
+i = 2
+nãoéprimo = True
 
-if(numero%2 == 0 and numero != 2):
+while i < numero and nãoéprimo:
+    if(numero % i == 0):
+        éprimo = False
+    else:
+        i = i + 1
+if(nãoéprimo):
     print('não primo')
 else:
     print('primo')
