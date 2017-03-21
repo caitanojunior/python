@@ -13,7 +13,7 @@ while(naoTemNumeroAdjacenteIgual and num > 0):
         naoTemNumeroAdjacenteIgual = True
 
 if naoTemNumeroAdjacenteIgual == False:
-    print('Esta sequência um número adjacente igual no dígito', num%10)
+    print('Esta sequência tem um número adjacente igual no dígito', num%10)
 else:
     print('Esta sequência não tem um número adjacente igual.')
 
