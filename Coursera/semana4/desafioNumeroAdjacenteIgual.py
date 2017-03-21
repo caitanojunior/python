@@ -1,4 +1,4 @@
-num = int(input('Digite um número inteiro com no mínimo 3 dígitos: '))
+num = int(input('Digite um número inteiro: '))
 
 naoTemNumeroAdjacenteIgual = True
 
@@ -13,9 +13,8 @@ while(naoTemNumeroAdjacenteIgual and num > 0):
         naoTemNumeroAdjacenteIgual = True
 
 if naoTemNumeroAdjacenteIgual == False:
-    print('Esta sequência tem um número igual')
-    print(num)
+    print('Esta sequência um número adjacente igual no dígito', num%10)
 else:
-    print('Esta sequência não tem um número igual')
+    print('Esta sequência não tem um número adjacente igual.')
 
 
