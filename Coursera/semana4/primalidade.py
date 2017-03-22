@@ -1,14 +1,12 @@
 numero = int(input('Digite um número inteiro: '))
 
-i = 2
-nãoéprimo = True
+for i in range(2, numero+1):
+	if i != numero:
+		i = numero % i
+		if i == 0:
+			print ('não primo')
+			break
+	else:
+		print ('primo')
+		break
 
-while i < numero and nãoéprimo:
-    if(numero % i == 0):
-        éprimo = False
-    else:
-        i = i + 1
-if(nãoéprimo):
-    print('não primo')
-else:
-    print('primo')
