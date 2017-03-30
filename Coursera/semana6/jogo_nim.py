@@ -1,5 +1,8 @@
 import random
 
+você = 0
+computador = 0
+
 def partida():
     n = int(input("Quantas peças? "))
     m = int(input("Limite de peças por jogada? "))
@@ -23,6 +26,7 @@ def computador_escolhe_jogada(n, m):
         if (m <= n):
             usuario_escolhe_jogada(n, m)
         else:
+            computador = 1
             print("Fim do jogo! O computador ganhou!")
     else:
         jogada = m
@@ -32,6 +36,7 @@ def computador_escolhe_jogada(n, m):
         if(m <= n):
             usuario_escolhe_jogada(n, m)
         else:
+            computador = 1
             print("Fim do jogo! O computador ganhou!")
 
 def usuario_escolhe_jogada(n, m):
@@ -42,7 +47,25 @@ def usuario_escolhe_jogada(n, m):
     if (m <= n):
         computador_escolhe_jogada(n, m)
     else:
+        você = 1
         print("Fim do jogo! Você ganhou!")
 
+print("Bem-vindo ao jogo do NIM! Escolha:")
+print("1 - para jogar uma partida isolada")
+print("2 - para jogar um campeonato 2")
+opção = int(input())
 
-partida()
+if(opção == 1):
+    partida()
+elif(opção == 2):
+    i = 0
+    while i < 3:
+        partida()
+        i = i + 1
+        você = você + 1#verificar lógica
+        computador = computador + 1#verificar lógica
+    print("**** Final do campeonato! ****")
+    print("Placar: Você", você, "X", computador, "Computador")
+else:
+    print("Opção inválida,")
+
