@@ -3,88 +3,111 @@ import random
 computador = 0
 você = 0
 
+def computador_escolhe_jogada(n, m):
+    jogada = random.randint(1, m)
+    peçasRestante = n - jogada
+    if(peçasRestante % (m + 1) != 0):
+        jogada = m
+        peçasRestante = n - jogada
+        if(jogada > n):
+            jogada = n
+            peçasRestante = n - jogada
+        else:
+            jogada
+            peçasRestante = n - jogada
+    else:
+        jogada
+        peçasRestante = n - jogada
+    n = peçasRestante
+    if(jogada > 1):
+        print("O computador tirou", jogada, "peças.")
+    else:
+        print("O computador tirou", jogada, "peça.")
+    if(n > 1):
+        print("Agora restam", n, "peças no tabuleiro.")
+        print()
+        usuario_escolhe_jogada(n, m)
+    elif(n == 1):
+        print("Agora resta apenas", n, "peça no tabuleiro.")
+        print()
+        usuario_escolhe_jogada(n, m)
+    else:
+        print("Fim do jogo! O computador ganhou!")
+        global computador
+        computador = 1
+
+def usuario_escolhe_jogada(n, m):
+    jogada = int(input("Quantas peças você vai tirar? "))
+    if(jogada > m or jogada < 1):
+        print("Oops! Jogada inválida! Tente de novo.")
+        print()
+        usuario_escolhe_jogada(n, m)
+    else:
+        n = n - jogada
+        if(jogada == 1):
+            print("Você tirou", jogada, "peça.")
+        else:
+            print("Você tirou", jogada, "peças.")
+        if (n > 1):
+            print("Agora restam", n, "peças no tabuleiro.")
+            print()
+            computador_escolhe_jogada(n, m)
+        elif (n == 1):
+            print("Agora resta uma peça no tabuleiro.")
+            print()
+            computador_escolhe_jogada(n, m)
+        else:
+            print("Fim do jogo! Você ganhou!")
+            print()
+            global você
+            você = 1
+
 def partida():
     n = int(input("Quantas peças? "))
     m = int(input("Limite de peças por jogada? "))
-    if n % (m + 1) == 0:
-        usuario_escolhe_jogada(n, m)
+    print()
+    if(n > 1 and m >= 1):
+        if n % (m + 1) == 0:
+            usuario_escolhe_jogada(n, m)
+        else:
+            computador_escolhe_jogada(n, m)
     else:
-        computador_escolhe_jogada(n, m)
+        print("Valores inválidos")
+        partida()
 
 def campeonato():
     i = 1
     global computador
     global você
+    pontosComputador = 0
+    pontosUsuário = 0
     while i <= 3:
         print("**** Rodada", i, "****")
+        print()
         partida()
         i = i + 1
-        computador = computador + 1
-        você = você + 1
+        pontosComputador = pontosComputador + computador
+        pontosUsuário = pontosUsuário + você
     print("**** Final do campeonato! ****")
-    print("Placar: Você", você - 1, "X", computador - 1, "Computador")
+    print()
+    print("Placar: Você", pontosUsuário, "X", pontosComputador, "Computador")
 
-def computador_escolhe_jogada(n, m):
-    if(m > 1):
-        jogada = random.randint(1, m -1)
-        if(jogada > n):
-            jogada = random.randint(1, n)
-        else:
-            jogada = jogada
-    else:
-        jogada = 1
-    peçasRestante = n - jogada
-    if peçasRestante % (m + 1) == 0:
-        n = n - jogada
-        print("O computador tirou", jogada, "peça.")
-        print("Agora restam", n, "peças no tabuleiro.")
-        if(n < 0):
-            n = 0
-            print("Agora restam", n, "peças no tabuleiro.")
-        if (n == 0):
-            print("Fim do jogo! O computador ganhou!")
-            global  computador
-            computador = 1
-        else:
-            usuario_escolhe_jogada(n, m)
-    else:
-        jogada = m
-        n = n - jogada
-        print("O computador tirou", jogada, "peça.")
-        if (n < 0):
-            n = 0
-            print("Agora restam", n, "peças no tabuleiro.")
-        if (n == 0):
-            print("Fim do jogo! O computador ganhou!")
-            computador = 1
-        else:
-            usuario_escolhe_jogada(n, m)
-
-
-def usuario_escolhe_jogada(n, m):
-    jogada = int(input("Quantas peças você vai tirar? "))
-    if(jogada > n):
-        print("Jogada inválida, escolha um valor maior ou igual a", n)
-        usuario_escolhe_jogada(n, m)
-    else:
-        n = n - jogada
-        print("Você tirou", jogada, "peça.")
-        print("Agora restam", n, "peças no tabuleiro.")
-        if (n == 0):
-            global você
-            você = 1
-            print("Fim do jogo! Você ganhou!")
-        else:
-            computador_escolhe_jogada(n, m)
-
+print()
 print("Bem-vindo ao jogo do NIM! Escolha:")
+print()
 print("1 - para jogar uma partida isolada")
 print("2 - para jogar um campeonato")
 opção = int(input())
 
+while(opção != 1 and opção != 2):
+    print("Oops! Opção inválida")
+    opção = int(input())
+
 if (opção == 1):
+    print("Voce escolheu uma partida isolada!")
+    print()
     partida()
-elif (opção == 2):
-    campeonato()
 else:
-    print("Opção inválida")
+    print("Voce escolheu um campeonato!")
+    print()
+    campeonato()
