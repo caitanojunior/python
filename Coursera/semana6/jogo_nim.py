@@ -4,19 +4,19 @@ computador = 0
 você = 0
 
 def computador_escolhe_jogada(n, m):
-    jogada = random.randint(1, m)
+    jogada = 1
     peçasRestante = n - jogada
-    if(peçasRestante % (m + 1) != 0):
+    if (peçasRestante % (m + 1) != 0):
         jogada = m
         peçasRestante = n - jogada
-        if(jogada > n):
+        if (jogada > n):
             jogada = n
             peçasRestante = n - jogada
         else:
             jogada
             peçasRestante = n - jogada
     else:
-        jogada
+        jogada = 1
         peçasRestante = n - jogada
     n = peçasRestante
     if(jogada > 1):
