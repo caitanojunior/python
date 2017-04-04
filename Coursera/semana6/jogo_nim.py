@@ -4,21 +4,21 @@ computador = 0
 você = 0
 
 def computador_escolhe_jogada(n, m):
-    jogada = 1
+    jogada = random.randint(1, m -1)
     peçasRestante = n - jogada
-    if (peçasRestante % (m + 1) != 0):
+
+    if (peçasRestante % (m + 1) == 0):
+        n = peçasRestante
+    else:
         jogada = m
-        peçasRestante = n - jogada
         if (jogada > n):
             jogada = n
             peçasRestante = n - jogada
         else:
             jogada
             peçasRestante = n - jogada
-    else:
-        jogada = 1
-        peçasRestante = n - jogada
-    n = peçasRestante
+        n = peçasRestante
+
     if(jogada > 1):
         print("O computador tirou", jogada, "peças.")
     else:
