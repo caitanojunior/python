@@ -35,7 +35,7 @@ def partida():
     m = int(input("Limite de peças por jogada? "))
     valor_invalido = True
 
-    if (0 < m < n):
+    if (n > 0 and m > 0):
         valor_invalido = False
         if n % (m + 1) == 0:
             print()
