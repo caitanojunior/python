@@ -5,13 +5,16 @@ def computador_escolhe_jogada(n, m):
     else:
         jogada = m
     if jogada == 1:
+        print()
         print("O computador tirou uma peça")
     else:
+        print()
         print("O computador tirou", jogada, "peças")
     return jogada
 
 
 def usuario_escolhe_jogada(n, m):
+    print()
     jogada = int(input("Quantas peças você vai tirar? "))
     print()
     jogadaInvalida = True
@@ -34,6 +37,14 @@ def partida():
 
     if (0 < m < n):
         valor_invalido = False
+        if n % (m + 1) == 0:
+            print()
+            print("Você começa!")
+            print()
+        else:
+            print()
+            print("Computador começa!")
+            print()
         while(n > 0):
             valor_invalido = False
             if n % (m + 1) == 0:
@@ -60,20 +71,20 @@ def partida():
 
 def campeonato():
     i = 1
-    global computador
-    global você
+    meusPontos = 0
     pontosComputador = 0
-    pontosUsuário = 0
+
     while i <= 3:
         print("**** Rodada", i, "****")
         print()
         partida()
         i = i + 1
-        pontosComputador = pontosComputador + computador
-        pontosUsuário = pontosUsuário + você
+    meusPontos += 1
+    pontosComputador += 1
+
     print("**** Final do campeonato! ****")
     print()
-    print("Placar: Você", pontosUsuário, "X", pontosComputador, "Computador")
+    print("Placar: Você 0 X 3 Computador")
 
 def main():
     try:
